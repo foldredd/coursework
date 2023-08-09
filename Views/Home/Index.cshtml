@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model coursework.Models.TriggerModel.UserRegist
+<style>
+    red-text {
+        color: red;
+    }
+</style>
+<div class="text-center">
+   <form method="post" asp-action="Index" style="background-color: #f2f2f2; padding: 20px; border: 1px solid #ccc;">
+  <div class="form-group">
+    <label for="username">Логін:</label>
+            <input type="text" id="login" name="Login" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="password">Пароль:</label>
+            <input type="password" id="password" name="Password" class="form-control">
+  </div>
+  <button type="submit" name="button" value="Regist" class="btn btn-primary">Зареєструватись</button>
+  <button type="submit" name="button" value="Log" class="btn btn-secondary">Увійти</button>
+</form>
+    @if (Model != null)
+    {
+        <div >
+            @Model.Result
+        </div>
+    }
+</div>

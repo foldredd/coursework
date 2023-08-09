@@ -1,0 +1,47 @@
+﻿@model List<string>
+
+<h1>Додати заказ</h1>
+
+<a href="@Url.Action("Profile", "Client")" class="custom-button">Повернутися</a>
+
+<form method="post" action="@Url.Action("AddOrder", "ClientController")">
+    <div class="form-group">
+        <label for="specialty">Оберіть спеціальність:</label>
+        <select id="specialty" name="specialty" class="form-control">
+            @foreach (var specialty in Model)
+            {
+                <option value="@specialty">@specialty</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="description">Опис замовлення:</label>
+        <textarea id="description" name="description" class="form-control" rows="5" maxlength="5000"></textarea>
+        <small class="form-text text-muted">Максимум 5000 символів.</small>
+    </div>
+
+    <button type="submit" name="button" value="Add" class="btn btn-primary">Додати заказ</button>
+</form>
+
+<style>
+    .custom-button {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        background-color: #337ab7;
+        color: #fff;
+        border-radius: 50px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        outline: none;
+        z-index: 9999;
+        transition: background-color 0.3s ease;
+    }
+
+        .custom-button:hover {
+            background-color: #23527c;
+        }
+</style>

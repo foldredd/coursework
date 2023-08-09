@@ -1,0 +1,100 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Профіль робітника</title>
+
+    <!-- Подключение стилей Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .top-panel {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .left-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .right-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .button {
+            margin-right: 10px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .card-title {
+            margin-top: 0;
+        }
+
+        .card-content {
+            margin-bottom: 20px;
+        }
+
+            .card-content p {
+                margin: 0;
+            }
+
+        .custom-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #337ab7;
+            color: #fff;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            outline: none;
+            z-index: 9999;
+            transition: background-color 0.3s ease;
+        }
+
+            .custom-button:hover {
+                background-color: #23527c;
+            }
+    </style>
+</head>
+<body>
+    <a href="@Url.Action("index", "Home")" class="custom-button">Вийти з облікового запису</a>
+    <div class="container">
+        <h1>Профиль робітника</h1>
+        <form method="post" asp-action="Profile" asp-controller="EmployeeController">
+            <div>
+                <div>
+                    <button type="submit" name="button" value="take" class="btn btn-primary">Обрати Заказ</button>
+                    <button type="submit" name="button" value="view" class="btn btn-primary">Просмотр вашої роботи</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Информация о клиенте</h5>
+                <div class="card-content">
+                     <p><strong>Ім'я':</strong> @Model.Name</p>
+                    <p><strong>Призвище':</strong> @Model.Surname</p>
+                    <p><strong>Login:</strong>@Model.Login</p>
+</body>

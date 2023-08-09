@@ -1,0 +1,44 @@
+﻿@using coursework.Models.DataModels
+@model List<ClientOrder>
+<style>
+    .custom-button {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        background-color: #337ab7;
+        color: #fff;
+        border-radius: 50px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        outline: none;
+        z-index: 9999;
+        transition: background-color 0.3s ease;
+    }
+
+        .custom-button:hover {
+            background-color: #23527c;
+        }
+</style>
+<a href="@Url.Action("Profile", "Manager")" class="custom-button">Повернутися</a>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Повне ім'я</th>
+            <th>Спеціальність</th>
+            <th>Час регістрації заказу</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr>
+            <td>@item.FullName</td>
+            <td>@item.Specialty</td>
+            <td>@item.OrderTime</td>
+                </tr>
+        }
+    </tbody>
+</table>

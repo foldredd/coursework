@@ -1,0 +1,90 @@
+﻿@using coursework.Models.DataModels
+@model List<Order>
+<style>
+    /* Add styles for elements */
+    .order-container {
+        background-color: #f8f9fa;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+        .order-container p {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .order-container button {
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .order-container button:hover {
+                background-color: #0056b3;
+            }
+
+    .custom-button {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        background-color: #337ab7;
+        color: #fff;
+        border-radius: 50px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        outline: none;
+        z-index: 9999;
+        transition: background-color 0.3s ease;
+    }
+
+        .custom-button:hover {
+            background-color: #23527c;
+        }
+</style>
+<a href="@Url.Action("Profile", "Employee")" class="custom-button">Повернутися</a>
+@foreach (var order in Model)
+{
+    <div class="order-container">
+        <p>Ім'я: @order.NameClient</p>
+        <p>Призвище: @order.SurnameClient</p>
+        <p>Email: @order.Email</p>
+        <p>Дата: @order.Date</p>
+        <p>Опис: @order.Description</p>
+
+
+        <form method="post" asp-action="ViewJob" asp-controller="EmployeeController">
+            <input type="hidden" name="orderId" value="@order.Id" />
+            @if (order.Cost == null)
+            {
+                <label for="cost">Ціна:</label>
+                <input type="hidden" name="orderId" value="@order.Id" />
+                <input type="text" class="form-control numeric-input" id="cost" name="cost" required>
+                <button type="submit" name="button" value="true" class="btn btn-primary">Заказ виконан</button>
+            }
+            else
+            {
+                <button type="submit" name="button" value="true" class="btn btn-primary">Заказ виконан</button>
+            }
+        </form>
+    </div>
+}
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            $('.numeric-input').on('input', function () {
+                var value = $(this).val();
+                value = value.replace(/[^0-9,]/g, ''); // Remove non-numeric characters except decimal point
+                $(this).val(value);
+            });
+        });
+    </script>
+}

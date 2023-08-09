@@ -1,0 +1,61 @@
+﻿@{
+    Layout = null;
+}@using coursework.Models.DataModels
+@model List<Order>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ваші закази</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        .custom-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #337ab7;
+            color: #fff;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            outline: none;
+            z-index: 9999;
+            transition: background-color 0.3s ease;
+        }
+
+            .custom-button:hover {
+                background-color: #23527c;
+            }
+    </style>
+</head>
+<body>
+    <a href="@Url.Action("Profile", "Client")" class="custom-button">Повернутися</a>
+    <div class="container">
+        <h1 class="mt-4 mb-4">Ваші закази</h1>
+
+        @foreach (var order in Model)
+        {
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3 class="card-title">Order ID: @order.Id</h3>
+                    <p class="card-text">Description: @order.Description</p>
+                    <p class="card-text">Date: @order.Date</p>
+
+                    @if (order.id_employee == null || order.id_employee == 0)
+                    {
+                        <p class="text-warning">Status: Очікує підтвердження</p>
+                    }
+                    else
+                    {
+                        <p class="text-success">Status: В процессі виконання</p>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

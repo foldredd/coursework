@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Button Example";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Button Example</title>
+    <style>
+        .custom-button {
+            margin: 10px 0;
+            display: block;
+            background-color: #428bca;
+            color: white;
+            border: none;
+            width: 100%;
+            height: 120px;
+            font-size: 40px;
+        }
+
+            .custom-button:hover {
+                background-color: #3276b1;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form method="post" asp-action="Reports" asp-controller="ManagerController">
+            <button type="submit" name="button" value="employee" class="custom-button">Перевірити роботу робітника</button>
+            <button type="submit" name="button" value="orders" class="custom-button">Усі виконані закази</button>
+            <button type="submit" name="button" value="rating" class="custom-button">Рейтинг спеціалізацій</button>
+            <button type="submit" name="button" value="clientorder" class="custom-button">переглянути замовлення від клієнтів</button>
+        </form>
+    </div>
+</body>
+</html>
